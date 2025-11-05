@@ -13,9 +13,6 @@ api.interceptors.request.use(
     const token = localStorage.getItem('token');
     if (token) {
       config.headers['x-auth-token'] = token;
-      console.log('🔑 Token added to request:', token.substring(0, 20) + '...'); // ← ADD THIS
-    } else {
-      console.warn('⚠️ No token found in localStorage'); // ← ADD THIS
     }
     return config;
   },
@@ -29,7 +26,6 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      console.error('❌ 401 Unauthorized - Clearing auth data'); // ← ADD THIS
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.location.href = '/login';

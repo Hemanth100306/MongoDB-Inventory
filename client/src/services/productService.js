@@ -11,7 +11,7 @@ export const productService = {
   
   delete: (id) => api.delete(`/products/${id}`),
   
-  getDashboardStats: () => api.get('/products/stats'), // ← FIX THIS (remove /dashboard)
+  getDashboardStats: () => api.get('/products/stats'), // ← FIXED (was /stats/dashboard)
   
   getLowStock: () => api.get('/products/low-stock')
 };
